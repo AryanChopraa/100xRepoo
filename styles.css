@@ -38,15 +38,20 @@ body {
   }
   
   #message-input {
-    width: 70%;
-    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    width: 95%;
+    padding: 20px;
     margin-right: 10px;
     border: 1px solid #ccc;
   }
   
   #send-button {
-    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 10px;
     background-color: #007bff;
+    border-radius: 30%;
     color: #fff;
     border: none;
     cursor: pointer;
