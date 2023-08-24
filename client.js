@@ -43,7 +43,46 @@ socket.on('message', data => {
 sendButton.addEventListener('click', () => {
   const message = messageInput.value;
   if (message.trim() !== '') {
-    socket.emit('message', message);
+    if (message.startsWith('/')) {
+      const command = message.slice(1).toLowerCase();
+      handleCommand(command);
+    } else {
+      socket.emit('message', message);
+    }
     messageInput.value = '';
   }
 });
+
+function handleCommand(command) {
+    if (command.startsWith('calc ')) {
+      const expression = command.slice(5); // Remove the "calc " part
+      try {
+        const result = eval(expression);
+        showMessage(`Result: ${expression} = ${result}`);
+      } catch (error) {
+        showMessage(`Error in calculation: ${error.message}`);
+      }
+    } else {
+      switch (command) {
+        case 'help':
+          showMessage('You can use commands: /help /calc /clear /random');
+          break;
+        case 'clear':
+          messageList.innerHTML = '';
+          break;
+        case 'random':
+          const randomNumber = Math.floor(Math.random() * 100) + 1;
+          showMessage(`Random number: ${randomNumber}`);
+          break;
+        default:
+          showMessage(`Command not recognized: ${command}`);
+      }
+    }
+  }
+
+function showMessage(message) {
+  const li = document.createElement('li');
+  li.textContent = message;
+  messageList.appendChild(li);
+  messageList.scrollTop = messageList.scrollHeight;
+}
