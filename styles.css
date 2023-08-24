@@ -1,0 +1,73 @@
+body {
+    font-family: 'Poppins';
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .users {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+  }
+  
+  .users h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+  
+  .chat {
+    flex: 3;
+    padding: 20px;
+  }
+  
+  .messages {
+    height: 70vh;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  #message-input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    .users {
+      flex: 1;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+    }
+    .chat {
+      flex: 1;
+    }
+    .messages {
+      height: 50vh;
+    }
+    #message-input {
+      width: 100%;
+    }
+  }
